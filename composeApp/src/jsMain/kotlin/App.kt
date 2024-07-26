@@ -1,17 +1,31 @@
 import androidx.compose.runtime.Composable
-import org.jetbrains.compose.web.dom.Div
-import org.jetbrains.compose.web.dom.H2
-import org.jetbrains.compose.web.dom.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import dev.inmo.tgbotapi.webapps.webApp
+
+// Don't use in real code
+enum class Screen {
+    CLICKER,
+    FRIENDS_LIST,
+}
+
+// Don't use in real code
+var currentScreen by mutableStateOf(Screen.CLICKER)
 
 @Composable
 fun App() {
-    Div(
-        attrs = {
-            classes(AppStyles.MainContainer)
-        }
-    ) {
-        H2 {
-            Text("This is my Kotlin ${Platform.name} application")
-        }
+    when (currentScreen) {
+        Screen.CLICKER -> ClickerScreen(
+            onFriendsList = {
+                currentScreen = Screen.FRIENDS_LIST
+            }
+        )
+
+        Screen.FRIENDS_LIST -> FriendsListScreen(
+            onBack = {
+                currentScreen = Screen.CLICKER
+            },
+        )
     }
 }

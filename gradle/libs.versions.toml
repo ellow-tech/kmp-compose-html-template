@@ -1,10 +1,15 @@
 [versions]
 compose-plugin = "1.6.11"
 kotlin = "2.0.0"
+moko-resources = "0.24.1"
+tgbotapi = "15.0.0"
 
 [libraries]
+moko-resources = { module = "dev.icerock.moko:resources", version.ref = "moko-resources" }
+tgbotapi-webapps = { module = "dev.inmo:tgbotapi.webapps", version.ref = "tgbotapi" }
 
 [plugins]
 compose-plugin = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+moko-resources = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-resources" }
